@@ -1,16 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _router = require("@redwoodjs/router");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 const BazingaPage = {
   name: "BazingaPage",
   loader: () => require("./pages/BazingaPage/BazingaPage")
@@ -27,21 +14,22 @@ const NotFoundPage = {
   name: "NotFoundPage",
   loader: () => require("./pages/NotFoundPage/NotFoundPage")
 };
+// In this file, all Page components from 'src/pages` are auto-imported. Nested
+// directories are supported, and should be uppercase. Each subdirectory will be
+// prepended onto the component name.
+//
+// Examples:
+//
+// 'src/pages/HomePage/HomePage.js'         -> HomePage
+// 'src/pages/Admin/BooksPage/BooksPage.js' -> AdminBooksPage
+import { Router, Route } from '@redwoodjs/router';
 
 const Routes = () => {
-  return /*#__PURE__*/_react.default.createElement(_router.Router, null, /*#__PURE__*/_react.default.createElement(_router.Route, {
-    path: "/bazinga",
-    page: BazingaPage,
-    name: "bazinga"
-  }), /*#__PURE__*/_react.default.createElement(_router.Route, {
-    path: "/",
-    page: HomePage,
-    name: "home"
-  }), /*#__PURE__*/_react.default.createElement(_router.Route, {
-    notfound: true,
-    page: NotFoundPage
-  }));
+  return <Router>
+      <Route path="/bazinga" page={BazingaPage} name="bazinga" />
+      <Route path="/" page={HomePage} name="home" />
+      <Route notfound page={NotFoundPage} />
+    </Router>;
 };
 
-var _default = Routes;
-exports.default = _default;
+export default Routes;
