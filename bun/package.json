@@ -13,7 +13,6 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.16.3",
     "@redwoodjs/forms": "0.39.4",
     "@redwoodjs/router": "0.39.4",
     "@redwoodjs/web": "0.39.4",
